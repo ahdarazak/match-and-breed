@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Adoption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .btns {
+            margin-top: 10px;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+        }
+        .logo {
+            width: 100px; 
+            height: auto;
+            position: absolute;
+            top: 20px; 
+            left: 20px; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: auto; /* Change to auto to fit content */
+            max-width: 600px; /* Optional: Adjust max width */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            padding: 10px 15px;
+            color: #654321;
+            background-color: #d8cfd8;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: #a98fba;
+            color: white;
+        }
+
+        .admin-container, .create-container {
+            position: fixed;
+            right: 20px;
+        }
+
+        .admin-container {
+            top: 20px;
+        }
+
+        .create-container {
+            top: 70px;
+        }
+
+        .create-button, .admin-button {
+            padding: 10px 15px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .create-button:hover, .admin-button:hover {
+            background-color: #444;
+        }
+        
+        .admin-icon {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="homeadmin.html" class="nav-item active">HOME</a>
+            <a href="viewbooking.html" class="nav-item">BOOKING</a>
+            <a href="viewcat.html" class="nav-item">CATS</a>
+        </div>
+    </div> 
+
+    <div class="admin-container">
+        <button class="admin-button" onclick="window.location.href='viewaccount.html'">
+            <span class="admin-icon">👤</span> ADMIN
+        </button>
+    </div>
+
+    <div class="create-container">
+        <button class="create-button" onclick="window.location.href='createcat.html'">CREATE</button>
+    </div>
+
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="card">
+            <img src="marco.jpg" alt="Marco">
+            <h2>MARCO</h2>
+            <p>Age: 1 year 2 months</p>
+            <p>Breed: Persian</p>
+            <p>Color: Lilac</p>
+            <p>Level of on heat: 70%</p>
+            <p>Behaviour: Friendly</p>
+            <p>Price: RM120</p>
+            <div class="btns">
+                <button>UPDATE</button>
+                <button>DELETE</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="simba.jpg" alt="Simba">
+            <h2>SIMBA</h2>
+            <p>Age: 1 year</p>
+            <p>Breed: BSH</p>
+            <p>Color: Orange</p>
+            <p>Level of on heat: 50%</p>
+            <p>Behaviour: Friendly</p>
+            <p>Price: RM100</p>
+            <div class="btns">
+                <button>UPDATE</button>
+                <button>DELETE</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="riceball.jpg" alt="Riceball">
+            <h2>RICEBALL</h2>
+            <p>Age: 2 years</p>
+            <p>Breed: BLH</p>
+            <p>Color: White</p>
+            <p>Level of on heat: 90%</p>
+            <p>Behaviour: Shy</p>
+            <p>Price: RM130</p>
+            <div class="btns">
+                <button>UPDATE</button>
+                <button>DELETE</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const navLinks = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.container');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const targetId = link.getAttribute('href').substring(1);
+
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                document.getElementById(targetId).style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
