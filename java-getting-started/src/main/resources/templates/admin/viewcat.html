@@ -121,9 +121,9 @@
 <body>
     <div class="navbar">
         <div class="nav-links">
-            <a href="homeadmin.html" class="nav-item active">HOME</a>
+            <a href="homeadmin.html" class="nav-item ">HOME</a>
             <a href="viewbooking.html" class="nav-item">BOOKING</a>
-            <a href="viewcat.html" class="nav-item">CATS</a>
+            <a href="viewcat.html" class="nav-item active">CATS</a>
         </div>
     </div> 
 
@@ -137,68 +137,89 @@
         <button class="create-button" onclick="window.location.href='createcat.html'">CREATE</button>
     </div>
 
-    <div class="container">
+    <div class="container" id="cat-container">
         <img src="logo.png" alt="Logo" class="logo">
-        <div class="card">
-            <img src="marco.jpg" alt="Marco">
-            <h2>MARCO</h2>
-            <p>Age: 1 year 2 months</p>
-            <p>Breed: Persian</p>
-            <p>Color: Lilac</p>
-            <p>Level of on heat: 70%</p>
-            <p>Behaviour: Friendly</p>
-            <p>Price: RM120</p>
-            <div class="btns">
-                <button>UPDATE</button>
-                <button>DELETE</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="simba.jpg" alt="Simba">
-            <h2>SIMBA</h2>
-            <p>Age: 1 year</p>
-            <p>Breed: BSH</p>
-            <p>Color: Orange</p>
-            <p>Level of on heat: 50%</p>
-            <p>Behaviour: Friendly</p>
-            <p>Price: RM100</p>
-            <div class="btns">
-                <button>UPDATE</button>
-                <button>DELETE</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="riceball.jpg" alt="Riceball">
-            <h2>RICEBALL</h2>
-            <p>Age: 2 years</p>
-            <p>Breed: BLH</p>
-            <p>Color: White</p>
-            <p>Level of on heat: 90%</p>
-            <p>Behaviour: Shy</p>
-            <p>Price: RM130</p>
-            <div class="btns">
-                <button>UPDATE</button>
-                <button>DELETE</button>
-            </div>
-        </div>
     </div>
+
     <script>
-        const navLinks = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('.container');
+        // Example data structure for cats (without actual values)
+        const cats = [
+            {
+                id: 1,
+                name: '',
+                age: '',
+                breed: '',
+                color: '',
+                levelOnHeat: '',
+                behaviour: '',
+                price: '',
+                imgSrc: ''
+            },
+            {
+                id: 2,
+                name: '',
+                age: '',
+                breed: '',
+                color: '',
+                levelOnHeat: '',
+                behaviour: '',
+                price: '',
+                imgSrc: ''
+            },
+            {
+                id: 3,
+                name: '',
+                age: '',
+                breed: '',
+                color: '',
+                levelOnHeat: '',
+                behaviour: '',
+                price: '',
+                imgSrc: ''
+            }
+        ];
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                const targetId = link.getAttribute('href').substring(1);
-
-                sections.forEach(section => {
-                    section.style.display = 'none';
-                });
-
-                document.getElementById(targetId).style.display = 'flex';
+        // Function to create cat cards dynamically
+        function renderCatCards(cats) {
+            const catContainer = document.getElementById('cat-container');
+            cats.forEach(cat => {
+                // Create a card element for each cat
+                const card = document.createElement('div');
+                card.classList.add('card');
+                
+                card.innerHTML = `
+                    <img src="${cat.imgSrc}" alt="${cat.name}">
+                    <h2>${cat.name}</h2>
+                    <p>Age: ${cat.age}</p>
+                    <p>Breed: ${cat.breed}</p>
+                    <p>Color: ${cat.color}</p>
+                    <p>Level of on heat: ${cat.levelOnHeat}</p>
+                    <p>Behaviour: ${cat.behaviour}</p>
+                    <p>Price: ${cat.price}</p>
+                    <div class="btns">
+                        <button onclick="editCat(${cat.id})">UPDATE</button>
+                        <button onclick="deleteCat(${cat.id})">DELETE</button>
+                    </div>
+                `;
+                
+                // Append the card to the container
+                catContainer.appendChild(card);
             });
-        });
+        }
+
+        // Call the function to render cat cards when the page loads
+        renderCatCards(cats);
+
+        // Placeholder functions for future backend interaction
+        function editCat(catId) {
+            console.log(`Editing cat with ID: ${catId}`);
+            // Call your backend to fetch cat data and populate form for editing
+        }
+
+        function deleteCat(catId) {
+            console.log(`Deleting cat with ID: ${catId}`);
+            // Call your backend to delete the cat from the database
+        }
     </script>
 </body>
 </html>
