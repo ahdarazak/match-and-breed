@@ -39,13 +39,24 @@
             background-color: #ffe6e6;
             border-color: #ffcccc;
         }
+        .signup-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
 <div class="login-container">
     <h2 class="login-title">Customer Login</h2>
-    <form th:action="@{/login}" th:object="${customer}" method="post">
+    <form id="loginForm" method="post" onsubmit="return validateLoginForm()">
         <!-- Error Message -->
         <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
 
@@ -60,11 +71,32 @@
         </div>
 
         <div class="d-grid">
-            <button type="submit" class="btn btn-secondary login-button">Login</button>
+            <button type="submit" class="btn btn-success login-button">Login</button>
         </div>
     </form>
+
+    <div class="signup-link">
+        <p>No account? Click <a href="signupcustomer.html">Sign Up</a></p>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function validateLoginForm() {
+        var username = document.getElementById("inputUsername").value;
+        var password = document.getElementById("inputPassword").value;
+
+        // Check if any field is empty
+        if (!username || !password) {
+            alert("Please fill in both username and password.");
+            return false; // Prevent form submission
+        }
+
+        // If both fields are filled, allow form submission
+        return true;
+    }
+</script>
+
 </body>
 </html>

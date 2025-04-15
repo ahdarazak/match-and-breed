@@ -1,70 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>landing page</title>
+    <title>Update Account | Match & Breed</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-color: lavender;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: plum;
+            min-height: 100vh;
         }
-        .container {
-            text-align: center;
-            background-color: whitesmoke;
-            padding: 30px;
-            max-width: 1200px;
+        .account-container {
+            background-color: white;
+            padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .account-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
         }
-        button {
-            margin: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
         }
-        .login-btn {
-            background-color: #007BFF;
-            color: white;
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
         }
-        .signup-btn {
-            background-color: #28A745;
-            color: white;
-        }
-        a {
+        .login-link a {
+            color: #007bff;
             text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .alert-danger {
+            color: red;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <img src="logo.png" alt="Your Image Description">
-    <h1>Welcome Match & Breed </h1>
-    <p>Easily match, book, and manage the perfect mates for your cats — all in one smart system.</p>
-    <p>Your perfect match awaits — log in or sign up to begin!</p>
-    <a href="login.html">
-        <button class="login-btn">Login</button>
-    </a>
-    <a href="signup.html">
-        <button class="signup-btn">Sign Up</button>
-    </a>
+<div class="account-container">
+    <h2 class="account-title">Update Account</h2>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="alert-danger" style="display: none;">
+        Please fill in all the fields.
+    </div>
+
+    <!-- Form to update username, full name, and email -->
+    <form id="updateForm" method="post" onsubmit="return validateForm()">
+
+        <!-- Username input field -->
+        <div class="mb-3">
+            <label for="inputUsername" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter username" required>
+        </div>
+
+        <!-- Full Name input field -->
+        <div class="mb-3">
+            <label for="inputFullname" class="form-label">Full Name</label>
+            <input type="text" name="fullname" class="form-control" id="inputFullname" placeholder="Enter full name" required>
+        </div>
+
+        <!-- Email input field -->
+        <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter email address" required>
+        </div>
+
+        <!-- Buttons: Update & Delete -->
+        <div class="btn-group">
+            <button type="submit" class="btn btn-success w-50">Update</button>
+            <button type="button" class="btn btn-danger w-50" onclick="confirmDelete()">Delete</button>
+        </div>
+
+    </form>
+
+    <!-- Back to Home link -->
+    <div class="login-link">
+        <a href="homeadmin.html" class="btn btn-outline-secondary mt-3">Back to Home</a>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById("inputUsername").value;
+        var fullname = document.getElementById("inputFullname").value;
+        var email = document.getElementById("inputEmail").value;
+
+        if (!username || !fullname || !email) {
+            document.getElementById("errorMessage").style.display = "block";
+            return false;
+        }
+
+        return true;
+    }
+
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete your account?")) {
+            window.location.href = "/deleteAccount"; // Change to your actual delete URL
+        }
+    }
+</script>
 
 </body>
 </html>
-EDIT!!!!!!!!!!!!!!!
