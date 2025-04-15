@@ -1,11 +1,14 @@
-// src/main/java/com/Model/Admin.java
 package com.Model;
 
 public class Admin {
     private String username;
     private String password;
 
-    // Constructor
+    // No-argument constructor (needed by Spring for model binding)
+    public Admin() {
+    }
+
+    // Constructor with parameters
     public Admin(String username, String password) {
         this.username = username;
         this.password = password;

@@ -1,10 +1,9 @@
-package com.repository;  // Correct package based on your structure
+package com.Repository;
 
-import com.model.Admin;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.Model.Admin;
 import java.util.Optional;
 
-public interface AdminRepository extends JpaRepository<Admin, Long> {
-    Optional<Admin> findByUsernameAndPassword(String username, String password);
+public interface AdminRepository {
     Optional<Admin> findByUsername(String username);
+    void save(Admin admin); // define your own save logic somewhere
 }
