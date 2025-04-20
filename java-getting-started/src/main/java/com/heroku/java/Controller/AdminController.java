@@ -8,17 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.heroku.java.Model.AccountAdminModel;
+import com.heroku.java.Model.AdminModel;
 
 @SpringBootApplication
 @Controller
-public class AccountController {
-
-    private final DataSource dataSource;
+public class AdminController {
 
     @Autowired
-    public AccountController(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public AdminController(DataSource dataSource) {
     }
 
     @GetMapping("/admin")
@@ -27,7 +24,7 @@ public class AccountController {
     }
 
     @GetMapping("/signupadmin")
-    public String adminSignup(@ModelAttribute AccountAdminModel account) {
+    public String adminSignup(@ModelAttribute AdminModel account) {
         // accountService.registerAdmin(account);
         return "admin/signupadmin"; // redirect to login after signup
     }

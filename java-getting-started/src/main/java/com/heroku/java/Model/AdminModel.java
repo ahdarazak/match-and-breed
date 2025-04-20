@@ -1,16 +1,16 @@
 package com.heroku.java.Model;
 
-public class Admin {
+public class AdminModel {
     private int adminID;
     private String username;
     private String password;
     private String fullname;
     private String email;
 
-    public Admin() {
+    public AdminModel() {
     }
 
-    public Admin(int adminID, String username, String password, String fullname, String email) {
+    public AdminModel(int adminID, String username, String password, String fullname, String email) {
         this.adminID = adminID;
         this.username = username;
         this.password = password;
@@ -18,7 +18,7 @@ public class Admin {
         this.email = email;
     }
 
-    public Admin(String username, String password) {
+    public AdminModel(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -56,7 +56,7 @@
 
 <div class="login-container">
     <h2 class="login-title">Customer Login</h2>
-    <form id="loginForm" method="post" onsubmit="return validateLoginForm()">
+    <form th:action="@{/customer}" th:object="${customer}" methodAttribute="customer">
         <!-- Error Message -->
         <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
 
@@ -76,7 +76,7 @@
     </form>
 
     <div class="signup-link">
-        <p>No account? Click <a href="signupcustomer.html">Sign Up</a></p>
+        <p>No account? Click <a th:href="@{/signupcustomer}">Sign Up</a></p>
     </div>
 </div>
 
@@ -88,7 +88,7 @@
         var password = document.getElementById("inputPassword").value;
 
         // Check if any field is empty
-        if (!username || !password) {
+        if (!customerUsername || !customerPassword) {
             alert("Please fill in both username and password.");
             return false; // Prevent form submission
         }
