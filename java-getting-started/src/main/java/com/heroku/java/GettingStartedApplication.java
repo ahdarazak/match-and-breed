@@ -23,12 +23,7 @@ public class GettingStartedApplication {
 
     @GetMapping("/")
     public String index() {
-        return "index";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+        return "landingpage";
     }
 
     @GetMapping("/database")

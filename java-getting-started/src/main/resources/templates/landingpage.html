@@ -52,14 +52,14 @@
 <body>
 
 <div class="container">
-    <img src="kucing.jpeg" alt="Your Image Description">
+    <img th:src="@{/kucing.jpeg}" alt="Your Image Description">
     <h1>Welcome Match & Breed</h1>
     <p>Easily match, book, and manage the perfect mates for your cats — all in one smart system.</p>
     <p>Your perfect match awaits — log in or sign up to begin!</p>
-    <a href="customer/customer.html">
+    <a th:href="@{/customer}">
         <button class="login-btn">Customer</button>
     </a>
-    <a href="admin/admin.html">
+    <a th:href="@{/admin}">
         <button class="signup-btn">Admin</button>
     </a>
 </div>
