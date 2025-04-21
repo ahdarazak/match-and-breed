@@ -57,27 +57,23 @@
 <div class="login-container">
     <h2 class="login-title">Admin Login</h2>
     <form th:action="@{/admin}" th:object="${admin}" method="post">
-        <!-- Error Message -->
         <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
-
+    
         <div class="mb-3">
-            <label for="inputUsername" class="form-label">Username</label>
-            <!-- <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter admin username" required th:value="${admin.username}" /> -->
-            <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter admin username" required />
+            <label for="username" class="form-label">Username</label>
+            <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Enter admin username" required />
         </div>
-
+    
         <div class="mb-3">
-            <label for="inputPassword" class="form-label">Password</label>
-            <!-- <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter password" required th:value="${admin.password}" /> -->
-            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter password" required />
+            <label for="password" class="form-label">Password</label>
+            <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Enter password" required />
         </div>
-
+    
         <div class="d-grid">
-            <!-- <a href="homeadmin.html" class="btn btn-success login-button">Login</a> -->
             <button type="submit" class="btn btn-success login-button">Sign In</button>
         </div>
-        
     </form>
+    
 
     <div class="signup-link">
         <p>No account? Click <a th:href="@{/signupadmin}">Sign Up</a></p>
