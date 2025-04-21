@@ -57,7 +57,6 @@ public AdminController(AdminServices adminService) {
             return "admin/admin";
         }
     }
-    
 
     @GetMapping("/admin/dashboard")
     public String dashboard(HttpSession session, Model model) {

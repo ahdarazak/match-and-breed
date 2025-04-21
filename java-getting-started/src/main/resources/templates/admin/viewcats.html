@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Adoption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #E1B7E6, #B2E2D8); 
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .btns {
+            margin-top: 10px;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+        }
+        .logo {
+            width: 100px; 
+            height: auto;
+            position: absolute;
+            top: 20px; 
+            left: 20px; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: auto; /* Change to auto to fit content */
+            max-width: 600px; /* Optional: Adjust max width */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            padding: 10px 15px;
+            color: #654321;
+            background-color: #d8cfd8;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: #a98fba;
+            color: white;
+        }
+
+        .admin-container, .create-container {
+            position: fixed;
+            right: 20px;
+        }
+
+        .admin-container {
+            top: 20px;
+        }
+
+        .create-container {
+            top: 70px;
+        }
+
+        .create-button, .admin-button {
+            padding: 10px 15px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .create-button:hover, .admin-button:hover {
+            background-color: #444;
+        }
+        
+        .admin-icon {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="homeadmin.html" class="nav-item ">HOME</a>
+            <a href="viewbooking.html" class="nav-item">BOOKING</a>
+            <a href="viewcats.html" class="nav-item active">CATS</a>
+        </div>
+    </div> 
+
+    <div class="admin-container">
+        <button class="admin-button" onclick="window.location.href='viewaccount.html'">
+            <span class="admin-icon">👤</span> ADMIN
+        </button>
+    </div>
+
+    <div class="create-container">
+        <button class="create-button" onclick="window.location.href='createcat.html'">CREATE</button>
+    </div>
+
+    <div class="container" id="cat-container">
+        <img src="logo.png" alt="Logo" class="logo">
+    </div>
+
+    <script>
+        // Example data structure for cats (without actual values)
+        const cats = [
+            {
+                id: 1,
+                name: '',
+                age: '',
+                breed: '',
+                color: '',
+                levelOnHeat: '',
+                behaviour: '',
+                price: '',
+                imgSrc: ''
+            },
+            {
+                id: 2,
+                name: '',
+                age: '',
+                breed: '',
+                color: '',
+                levelOnHeat: '',
+                behaviour: '',
+                price: '',
+                imgSrc: ''
+            },
+            {
+                id: 3,
+                name: '',
+                age: '',
+                breed: '',
+                color: '',
+                levelOnHeat: '',
+                behaviour: '',
+                price: '',
+                imgSrc: ''
+            }
+        ];
+
+        // Function to create cat cards dynamically
+        function renderCatCards(cats) {
+            const catContainer = document.getElementById('cat-container');
+            cats.forEach(cat => {
+                // Create a card element for each cat
+                const card = document.createElement('div');
+                card.classList.add('card');
+                
+                card.innerHTML = `
+                    <img src="${cat.imgSrc}" alt="${cat.name}">
+                    <h2>${cat.name}</h2>
+                    <p>Age: ${cat.age}</p>
+                    <p>Breed: ${cat.breed}</p>
+                    <p>Color: ${cat.color}</p>
+                    <p>Level of on heat: ${cat.levelOnHeat}</p>
+                    <p>Behaviour: ${cat.behaviour}</p>
+                    <p>Price: ${cat.price}</p>
+                    <div class="btns">
+                        <button onclick="editCat(${cat.id})">UPDATE</button>
+                        <button onclick="deleteCat(${cat.id})">DELETE</button>
+                    </div>
+                `;
+                
+                // Append the card to the container
+                catContainer.appendChild(card);
+            });
+        }
+
+        // Call the function to render cat cards when the page loads
+        renderCatCards(cats);
+
+        // Placeholder functions for future backend interaction
+        function editCat(catId) {
+            console.log(`Editing cat with ID: ${catId}`);
+            // Call your backend to fetch cat data and populate form for editing
+        }
+
+        function deleteCat(catId) {
+            console.log(`Deleting cat with ID: ${catId}`);
+            // Call your backend to delete the cat from the database
+        }
+    </script>
+</body>
+</html>

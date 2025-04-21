@@ -4,20 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <title>Customer Login | Match & Breed</title>
 
-    
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-
-        
         body {
-            background-color: peachpuff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,7 +25,7 @@
             height: auto;
             z-index: 1000;
         }
-        
+
         .login-container {
             background-color: white;
             border-radius: 10px;
@@ -73,6 +65,7 @@
 <body>
 
     <img th:src="@{/logo.png}" alt="Logo" class="top-left-logo">
+
 <div class="login-container">
     <h2 class="login-title">Customer Login</h2>
     <form th:action="@{/customer}" th:object="${customer}" method="post">
@@ -81,12 +74,12 @@
 
         <div class="mb-3">
             <label for="inputUsername" class="form-label">Username</label>
-            <input type="text" name="customerUsername" class="form-control" id="inputUsername" placeholder="Enter your username" required th:value="${customer.customerUsername}" />
+            <input type="text" th:fields="*{customerUsername}" class="form-control" id="customerUsername" placeholder="Enter your username" required th:value="${customer.customerUsername}" />
         </div>
 
         <div class="mb-3">
             <label for="inputPassword" class="form-label">Password</label>
-            <input type="password" name="customerPassword" class="form-control" id="inputPassword" placeholder="Enter your password" required th:value="${customer.customerPassword}" />
+            <input type="password" th:fields="*{customerPassword}" class="form-control" id="customerPassword" placeholder="Enter your password" required th:value="${customer.customerPassword}" />
         </div>
 
         <div class="d-grid">
@@ -103,8 +96,8 @@
 
 <script>
     function validateLoginForm() {
-        var username = document.getElementById("inputUsername").value;
-        var password = document.getElementById("inputPassword").value;
+        var username = document.getElementById("customerUsername").value;
+        var password = document.getElementById("customerPassword").value;
 
         // Check if any field is empty
         if (!customerUsername || !customerPassword) {
