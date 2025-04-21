@@ -72,7 +72,7 @@ public AdminController(AdminServices adminService) {
     @GetMapping("/signupadmin")
     public String adminSignup(Model model) {
         model.addAttribute("admin", new AdminModel());
-        return "admin/signupadmin";
+        return "signupadmin";
     }
 
     @PostMapping("/signupadmin")

@@ -77,7 +77,8 @@
         Please fill in all the fields.
     </div>
 
-    <form th:action="@{/signupadmin}" th:object="${admin}" method="post" onsubmit="return validateForm()">
+    <form th:action="@{/signupadmin}" th:object="${admin}" method="post">
+
       <div id="errorMessage" class="alert-danger" style="display: none;">
           Please fill in all the fields.
       </div>
